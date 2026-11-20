@@ -1,0 +1,22 @@
+{
+  "index": "products",
+  "mappings": {
+    "properties": {
+      "name": { "type": "text" },
+      "description": { "type": "text" },
+      "sku": { "type": "keyword" },
+      "tags": { "type": "keyword" },
+      "category": { "type": "text", "fields": { "raw": { "type": "keyword" } } },
+      "categorySlug": { "type": "keyword" },
+      "brand": { "type": "text" },
+      "vendor": { "type": "text" },
+      "vendorSlug": { "type": "keyword" },
+      "price": { "type": "double" },
+      "rating": { "type": "double" },
+      "inStock": { "type": "boolean" },
+      "status": { "type": "keyword" },
+      "slug": { "type": "keyword" },
+      "salesCount": { "type": "integer" }
+    }
+  }
+}

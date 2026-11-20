@@ -1,0 +1,32 @@
+{
+  "name": "northstar-marketplace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Northstar, a multi-vendor marketplace.",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @marketplace/shared && npm run build -w @marketplace/api && npm run build -w @marketplace/web",
+    "dev": "npm run build -w @marketplace/shared && concurrently -n api,web -c blue,magenta \"npm run dev -w @marketplace/api\" \"npm run dev -w @marketplace/web\"",
+    "dev:api": "npm run build -w @marketplace/shared && npm run dev -w @marketplace/api",
+    "dev:web": "npm run dev -w @marketplace/web",
+    "start:api": "npm run start -w @marketplace/api",
+    "prisma:generate": "npm run prisma:generate -w @marketplace/api",
+    "db:migrate": "npm run db:migrate -w @marketplace/api",
+    "db:push": "npm run db:push -w @marketplace/api",
+    "db:seed": "npm run db:seed -w @marketplace/api",
+    "test": "npm run build -w @marketplace/shared && npm run test -w @marketplace/api && npm run test -w @marketplace/web",
+    "test:api": "npm run build -w @marketplace/shared && npm run test -w @marketplace/api",
+    "test:web": "npm run test -w @marketplace/web",
+    "test:e2e": "npm run test:e2e -w @marketplace/web",
+    "typecheck": "npm run build -w @marketplace/shared && npm run typecheck -w @marketplace/api && npm run typecheck -w @marketplace/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
